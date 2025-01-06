@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Intranet der Sternwarte Regensburg</title>
+	</head>
+	<script defer>
+fetch('https://stw-r.de/sqm-aussen/last.txt')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('failed to fetch data');
+        }
+        return response.text();
+    })
+    .then(data => {
+        document.getElementById('sqm-aussen-last').textContent = data.split(",")[2].trim();
+    });
+	</script>
+	<body bgcolor="#FFF">
+		<style type="text/css">
+			A:visited {color:blue}
+		</style>
+		<div align="center">
+			<h1>Willkommen im Intranet der Sternwarte Regensburg</h1>
+			<p>Falls Sie Informationen zu Besuchszeiten, F&uuml;hrungen, Sternpatenschaften, etc. suchen, schauen Sie bitte auf unsere <a href="http://sternwarte-regensburg.de">Homepage</a>.</p>
+			<p></p>
+			<table cellpadding="5">
+				<tr>
+					<td valign="top"><img src="stw.jpg"></td>
+					<td valign="top">
+						<h2 align="center">Verein</h2>
+						<ul>
+							<li>Aktuelle Bilder der AllSky Kameras
+								<ul>
+									<li><a href="allsky/stadt">Stadtsternwarte</a></li>
+									<li><a href="allsky/aussensternwarte">Au&szlig;ensternwarte</a></li>
+								</ul>
+							</li>
+							<li>SkyQualityMeter Daten
+								<ul>
+									<li>Au&szlig;ensternwarte: <span style="text-decoration:underline; text-decoration-style: dotted;" title="> 21mag entspricht einem dunklen Himmel geeignet f&uuml;r astronomische Beobachtung" id="sqm-aussen-last"></span><span id="sqm-aussen-last"></span> (<a href="https://stw-r.de/sqm-aussen/graph.png">Graph</a>, <a href="https://stw-r.de/sqm-aussen/history.txt">Rohdaten</a>)</li>
+								</ul>
+							</li>
+							<li>Intranet (Zugangsdaten ben&ouml;tigt)
+								<ul>
+									<li><a href="https://user.stw-r.de">Keycloak (zentrales Login)</a></li>
+									<li><a href="https://forum.sternwarte-regensburg.de">Mitglieder-Forum</a></li>
+									<li><a href="https://cloud.stw-r.de">Nextcloud</a> (<a href="https://cloud.stw-r.de/f/1604">Archiv</a>, <a href="https://cloud.stw-r.de/f/1635">Bedienungsanleitungen</a>)</li>
+									<li><a href="https://cloud.stw-r.de/apps/calendar/">F&uuml;hrungskalender</a></li>
+									<li><a href="https://sternwarte-regensburg.de/wp-admin">Homepage Login</a></li>
+									<li><a href="https://koha.stw-r.de">Bibliotheksverwaltung</a></li>
+									<li><a href="https://allsky-stadt.stw-r.de/allsky/index.php">AllSky Stadt</a></li>
+									<li><a href="https://allsky-aussen.stw-r.de/allsky/index.php">AllSky Au&szlig;ensternwarte</a></li>
+								</ul>
+							</li>
+							<li><a href="https://opac.stw-r.de">B&uuml;chersuche (OPAC)</a></li>
+							<li><a href="https://sternwarte-regensburg.de/impressum">Impressum</a></li>
+						</ul>
+						<h2 align="center">Externe Links</h2>
+						<ul>
+							<li><a href="https://www.heavens-above.com/?lat=49.01667&lng=12.1&loc=Regensburg&alt=332&tz=CET">Heavens-Above.com - Regensburg</a></li>
+							<li><a href="https://www.meteoblue.com/en/weather/outdoorsports/seeing/wiesenfelden_germany_2809241">Meteoblue Seeing Wiesenfelden</a></li>
+							<li><a href="https://www.meteoblue.com/en/weather/outdoorsports/seeing/regensburg_germany_2849483">Meteoblue Seeing Regensburg</a></li>
+							<li><a href="https://de.wikipedia.org/wiki/Sternwarte_Regensburg">Wikipedia Artikel zur Sternwarte</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
